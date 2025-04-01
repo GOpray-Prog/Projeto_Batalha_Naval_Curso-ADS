@@ -1,14 +1,23 @@
 #include <stdio.h>
-
+#include <string.h> // Biblioteca que me permite receber dois valores em uma string
 
 int main(){
-   int posicao_linha[6];
-   char posicao_coluna[6];
-   int tabuleiro[10][10];
+  int condicao, condicao1;
+  int tabuleiro[10][10] = {0};
+   
+do
+{
+    int posicao_linha[6] = {0};  // Zera as posições do array
+    char posicao_coluna[6] = {0}; // Zera os caracteres
+    char compara[6][4] = {{0}};   // Zera todas as strings
+    char posicoes[6][4] = {{0}};  // Zera todas as strings
+    condicao = 0;
+    condicao1 = 0;
 
+    
 
     //Tabuleiro
-    printf("Este é seu Tabuleiro\n");
+    printf("\nEste é seu Tabuleiro\n");
     printf("   a b c d e f g h i j\n");
 
     for (int linha = 9; linha >= 0; linha--) {
@@ -27,7 +36,9 @@ int main(){
     for (int i = 0; i < 3; i++)
     {
     printf("\nTamanho %d\n", i+1);
-    scanf(" %d%c", &posicao_linha[i], &posicao_coluna[i]); 
+    scanf(" %d%c", &posicao_linha[i], &posicao_coluna[i]);
+    sprintf(posicoes[i], "%d%c", posicao_linha[i], posicao_coluna[i]);
+    strcpy(compara[i], posicoes[i]);
     getchar();
 
     }
@@ -37,37 +48,73 @@ int main(){
     for (int i = 3; i < 6; i++)
     {
     printf("\nTamanho %d\n", i-2);
-    scanf(" %d%c", &posicao_linha[i], &posicao_coluna[i]); 
+    scanf(" %d%c", &posicao_linha[i], &posicao_coluna[i]);
+    sprintf(posicoes[i], "%d%c", posicao_linha[i], posicao_coluna[i]);
+    strcpy(compara[i], posicoes[i]);
     getchar();
 
     }
 
-for (int i = 0; i < 6; i++)
-{  // Verifica os limites do tabuleiro
-if (posicao_coluna[i] - 'a' < 0 || posicao_coluna[i] - 'a' > 9 || posicao_linha[i] < 0 || posicao_linha[i] > 9 || posicao_linha[i] == posicao_linha[i])
-{
-    printf("Posição inválida!\n");
-} else 
-{
-    // Atribui o valor 3 na posição escolhida
-    tabuleiro[posicao_linha[i]][posicao_coluna[i]- 'a'] = 3;
-}
-}
-    // Atualiza sua posiçao no tabuleiro
-    printf("\nSua Posicao\n");
-    printf("    a b c d e f g h i j\n");
 
-    for (int linha = 9; linha >= 0; linha--)
+    for (int i = 0; i < 6; i++)
+    {  // Verifica os limites do tabuleiro
+    if (posicao_coluna[i] - 'a' < 0 || posicao_coluna[i] - 'a' > 9 || posicao_linha[i] < 0 || posicao_linha[i] > 9)
     {
-       printf("%d   ", linha);
-       for (int coluna = 0; coluna <= 9; coluna++)
-       {    
-           printf("%d ", tabuleiro[linha][coluna]);
+        printf("\nERRO !!! A marcaçao %d%c esta fora do tabuleiro!\n", posicao_linha[i], posicao_coluna[i]);
+        condicao = 1;
+    }else 
+    {
+        // Atribui o valor 3 na posição escolhida
         
+        tabuleiro[posicao_linha[i]][posicao_coluna[i]- 'a'] = 3;
+    }
+    }
+
+    // compara as posiçoes(Tive que usar outra biblioteca pois nao o sinal de comparaçao "==" entre duas strings)
+    for (int i = 0; i < 6; i++){
+       for (int j = 0; j < i; j++)
+       {
+        if (strcmp(posicoes[i], compara[j]) == 0)
+        {
+            printf("\nERRO !!! A posiçao %s ja foi ocupada\n", posicoes[i]);
+            condicao1 = 1;
+        }
+       }  
+    }   
+    if (condicao == 1 || condicao1 == 1)
+    {
+     printf("Tente Novamente!\n");
+     printf("\nJogo Reiniciado!\n");
+      
+     //Reinicia a variavel tabuleiro
+     for (int i = 0; i < 10; i++)
+     {
+         for (int j = 0; j < 10; j++)
+         {
+             tabuleiro[i][j] = 0;
          }
-       printf("  %d\n", linha);
-      }
-    printf("    a b c d e f g h i j\n\n");
-   
+    }
+ } 
+}while (condicao == 1 || condicao1 == 1);
+
+
+        // Atualiza sua posiçao no tabuleiro
+        printf("\nSucesso !!!\n");
+        printf("\nSua Posicao\n");
+        printf("    a b c d e f g h i j\n");
     
+        for (int linha = 9; linha >= 0; linha--)
+        {
+           printf("%d   ", linha);
+           for (int coluna = 0; coluna <= 9; coluna++)
+           {    
+               printf("%d ", tabuleiro[linha][coluna]);
+            
+             }
+           printf("  %d\n", linha);
+          }
+        printf("    a b c d e f g h i j\n");
+
 }
+
+

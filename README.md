@@ -1,67 +1,40 @@
-# Batalha Naval - Jogo em C
+# Batalha Naval - Versão Beta 1.1
 
-## Descrição
-Este é um jogo simples de **Batalha Naval** implementado em **linguagem C**. O jogo permite que o jogador posicione três navios em um tabuleiro de 10x10, utilizando coordenadas no formato **linha e coluna** (ex: `2b`).
+## Sobre o Jogo
+Este é um jogo de **Batalha Naval** desenvolvido em **linguagem C**. O objetivo é posicionar estrategicamente seus navios no tabuleiro e preparar-se para a batalha!
+
+## Funcionalidades
+- Tabuleiro de **10x10** representado por coordenadas de linha (0-9) e coluna (a-j).
+- Dois navios de **tamanho 3**, cada um ocupando **três células consecutivas**.
+- Verifica se os navios estão dentro dos limites do tabuleiro.
+- **Restrição de sobreposição**: Cada navio deve ocupar um espaço único no tabuleiro, garantindo que nenhum navio ocupe a mesma célula.
 
 ## Como Jogar
-1. O jogo inicia imprimindo um tabuleiro 10x10 preenchido com `0`.
-2. O jogador insere as posições de três navios utilizando coordenadas no formato `linha-coluna` (ex: `2b`).
-3. O tabuleiro é atualizado, e as posições escolhidas pelo jogador são marcadas com `3`.
-4. O tabuleiro atualizado é impresso na tela.
+1. O tabuleiro será exibido no console.
+2. Digite as coordenadas do primeiro navio (exemplo: `2b, 3c, 4d`).
+3. Digite as coordenadas do segundo navio (exemplo: `5e, 6f, 7g`).
+4. O tabuleiro atualizado será exibido mostrando as posições dos navios.
 
-## Exemplo de Saída
-```
-Este é seu Tabuleiro
-   a b c d e f g h i j
-9  0 0 0 0 0 0 0 0 0 0  9
-8  0 0 0 0 0 0 0 0 0 0  8
-...
-0  0 0 0 0 0 0 0 0 0 0  0
-   a b c d e f g h i j
-
-Conforme seu tabuleiro, digite a posição do seu 1º Navio (ex: 2b):
-2b
-Conforme seu tabuleiro, digite a posição do seu 2º Navio (ex: 5d):
-5d
-Conforme seu tabuleiro, digite a posição do seu 3º Navio (ex: 8a):
-8a
-
-Sua Posicao
-   a b c d e f g h i j
-9  0 0 0 0 0 0 0 0 0 0  9
-8  3 0 0 0 0 0 0 0 0 0  8
-...
-5  0 0 0 3 0 0 0 0 0 0  5
-...
-2  0 3 0 0 0 0 0 0 0 0  2
-...
-0  0 0 0 0 0 0 0 0 0 0  0
-   a b c d e f g h i j
-```
-
-## Estrutura do Código
-- **Inicialização**: O tabuleiro é criado como uma matriz 10x10 e preenchido com `0`.
-- **Entrada do Jogador**: O jogador insere três coordenadas para posicionar os navios.
-- **Validação**: O jogo verifica se as coordenadas inseridas estão dentro dos limites do tabuleiro.
-- **Atualização do Tabuleiro**: Os navios são marcados com `3` nas posições escolhidas.
-- **Saída**: O tabuleiro atualizado é exibido ao jogador.
-
-## Possíveis Melhorias
-- Adicionar um oponente (IA ou segundo jogador)
-- Implementar ataques e verificação de acertos
-- Criar um sistema de rodadas
-- Melhorar a interface gráfica (exibir navios, água e tiros com diferentes caracteres)
+## Requisitos
+- Compilador C (GCC, Clang, etc.).
+- Terminal para execução do programa.
 
 ## Como Compilar e Executar
-Para compilar o código, use um compilador **GCC**:
-```bash
+Abra um terminal e execute os seguintes comandos:
+```sh
 gcc batalha_naval.c -o batalha_naval
-```
-Para executar o jogo:
-```bash
 ./batalha_naval
 ```
 
+## Melhorias Futuras
+- Implementar verificação para impedir sobreposição de navios.
+- Criar mecânica de ataque e defesa.
+- Adicionar modo multiplayer.
+
 ## Autor
-Criado por [Guilherme Oliveira - GOPRAY]
+Desenvolvido por **Guilherme Oliveira - GOPRAY**.
+
+---
+
+Divirta-se jogando! 🚢💥
 

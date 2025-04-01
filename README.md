@@ -7,7 +7,7 @@ Este é um jogo de **Batalha Naval** desenvolvido em **linguagem C**. O objetivo
 - Tabuleiro de **10x10** representado por coordenadas de linha (0-9) e coluna (a-j).
 - Dois navios de **tamanho 3**, cada um ocupando **três células consecutivas**.
 - Verifica se os navios estão dentro dos limites do tabuleiro.
-- **Restrição de sobreposição**: Cada navio deve ocupar um espaço único no tabuleiro, garantindo que nenhum navio ocupe a mesma célula.
+**Restrição de sobreposição**: Verifica se os navios estão na mesma posição, garantindo que cada célula seja ocupada por apenas um navio
 
 ## Como Jogar
 1. O tabuleiro será exibido no console.
